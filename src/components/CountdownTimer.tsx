@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const TARGET = new Date('2026-05-31T08:30:00+07:00');
@@ -7,65 +7,53 @@ function pad(n: number) {
   return String(n).padStart(2, '0');
 }
 
-function FlipDigit({ digit, prevDigit }: { digit: string; prevDigit: string }) {
-  const changed = digit !== prevDigit
-  
+function FlipDigit({ digit }: { digit: string }) {
   return (
     <div
       style={{ perspective: '200px' }}
       className="relative w-8 sm:w-10 h-12 sm:h-14 bg-black rounded-lg overflow-hidden flex items-center justify-center"
     >
-      {/* Base digit always visible */}
       <span className="text-2xl sm:text-3xl font-black text-white tabular-nums font-display select-none z-0">
         {digit}
       </span>
 
-      {/* Flip animation overlay */}
       <AnimatePresence>
-        {changed && (
-          <motion.div
-            key={digit}
-            initial={{ rotateX: -90, opacity: 1 }}
-            animate={{ rotateX: 0, opacity: 1 }}
-            exit={{ rotateX: 90, opacity: 0 }}
-            transition={{ duration: 0.35, ease: 'easeOut' }}
-            style={{
-              transformOrigin: 'center',
-              transformStyle: 'preserve-3d',
-              backfaceVisibility: 'hidden',
-              position: 'absolute',
-              inset: 0,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: 'black',
-              borderRadius: '8px',
-              zIndex: 10,
-            }}
-          >
-            <span className="text-2xl sm:text-3xl font-black text-white tabular-nums font-display select-none">
-              {digit}
-            </span>
-          </motion.div>
-        )}
+        <motion.div
+          key={digit}
+          initial={{ rotateX: -90, opacity: 1 }}
+          animate={{ rotateX: 0, opacity: 1 }}
+          exit={{ rotateX: 90, opacity: 0 }}
+          transition={{ duration: 0.35, ease: 'easeOut' }}
+          style={{
+            transformOrigin: 'center',
+            transformStyle: 'preserve-3d',
+            backfaceVisibility: 'hidden',
+            position: 'absolute',
+            inset: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: 'black',
+            borderRadius: '8px',
+            zIndex: 10,
+          }}
+        >
+          <span className="text-2xl sm:text-3xl font-black text-white tabular-nums font-display select-none">
+            {digit}
+          </span>
+        </motion.div>
       </AnimatePresence>
-
-      
     </div>
   );
 }
 
 function FlipUnit({ value, label }: { value: number; label: string }) {
   const str = pad(value);
-  const prevRef = useRef(str);
-  const prev = prevRef.current;
-  prevRef.current = str;
-
   return (
     <div className="flex flex-col items-center gap-2">
       <div className="flex gap-1">
-        <FlipDigit digit={str[0]} prevDigit={prev[0]} />
-        <FlipDigit digit={str[1]} prevDigit={prev[1]} />
+        <FlipDigit digit={str[0]} />
+        <FlipDigit digit={str[1]} />
       </div>
       <span className="text-[9px] font-mono text-gray-400 tracking-widest uppercase">
         {label}
