@@ -53,7 +53,7 @@ export default function CountdownTimer() {
       transition={{ duration: 0.6, delay: 0.2 }}
       className="mt-10 flex flex-col items-center"
     >
-      <span className="text-[10px] font-mono uppercase tracking-widest text-gray-400 mb-4">
+      <span className="text-[10px] font-mono uppercase tracking-widest text-gray-600 mb-4">
         Hội thảo bắt đầu sau
       </span>
       <div className="flex items-center gap-3 sm:gap-4">
