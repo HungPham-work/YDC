@@ -24,6 +24,7 @@ import {
   ArrowUp
 } from 'lucide-react';
 import contentData from './data/contentData.json';
+import LiveDopamineStat from './components/LiveDopamineStat';
 import RollingButton from './components/RollingButton';
 import LiveClock from './components/LiveClock';
 import ShaderBackground from './components/ShaderBackground';
@@ -331,7 +332,7 @@ export default function App() {
               </p>
               
               {/* Stat Card callout inline */}
-              <div className="bg-rose-50 border border-rose-100 p-5 rounded-2xl mb-8">
+              <div className="backdrop-blur-xl bg-white/20 border border-white/30 shadow-lg shadow-black/5 p-5 rounded-2xl mb-8">
                 <div className="flex items-center space-x-3 mb-2">
                   <span className="text-3xl font-display font-black text-[#FF5722]">{contentData.nature.callout.stat}</span>
                   <span className="text-xs font-bold text-rose-800 uppercase tracking-wide font-mono bg-rose-100 px-2.5 py-0.5 rounded-full">Dopamine Spike</span>
@@ -346,18 +347,8 @@ export default function App() {
               
             </div>
 
-            {/* Right Column: Large Image */}
-            <div className="flex flex-col gap-4">
-              <span className="text-xs font-mono text-gray-400 uppercase tracking-widest block text-right">
-                Hệ lụy thời gian thực
-              </span>
-              <img 
-                src={contentData.nature.largeImage} 
-                alt="Neurological Overstimulation" 
-                className="w-full aspect-3/2 object-cover rounded-2xl border border-gray-150 shadow-lg hover:scale-[1.02] hover:shadow-xl transition-all duration-300"
-                referrerPolicy="no-referrer"
-              />
-            </div>
+            {/* Right Column: Live Dopamine Stat */}
+            <LiveDopamineStat />
           </motion.div>
 
           {/* Mobile and Tablet layout fallback: Stack layout */}
@@ -366,7 +357,7 @@ export default function App() {
               {contentData.nature.leftText}
             </p>
 
-            <div className="bg-rose-50 border border-rose-100 p-5 rounded-2xl">
+            <div className="backdrop-blur-xl bg-white/20 border border-white/30 shadow-lg shadow-black/5 p-5 rounded-2xl">
               <div className="flex items-center space-x-3 mb-2">
                 <span className="text-3xl font-display font-black text-[#FF5722]">{contentData.nature.callout.stat}</span>
                 <span className="text-xs font-bold text-rose-800 uppercase tracking-wide font-mono bg-rose-100 px-2.5 py-0.5 rounded-full">Dopamine Spike</span>
@@ -376,20 +367,7 @@ export default function App() {
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <img 
-                src={contentData.nature.largeImage} 
-                alt="Overstimulation Graph Mobile" 
-                className="w-full aspect-[3/2] object-cover rounded-xl"
-                referrerPolicy="no-referrer"
-              />
-              <img 
-                src={contentData.nature.smallImage} 
-                alt="Understimulation Scan Mobile" 
-                className="w-full aspect-[3/2] object-cover rounded-xl"
-                referrerPolicy="no-referrer"
-              />
-            </div>
+            <LiveDopamineStat />
 
             <div className="pt-3">
              
@@ -431,13 +409,13 @@ export default function App() {
             <HedonicScaleCard 
               mode="fast"
               title="Fast Dopamine (Kích thích nhân tạo)"
-              description={"- Lướt TikTok, Facebook Reels, Youtube Shorts\n- Giải trí hờ hững không tốn mấy công sức\n- Tạo cảm giác hưng phấn tức thì nhưng kéo theo mệt mỏi"}
+              description="Lướt TikTok, Reels, Shorts — giải trí tức thì không cần nỗ lực, nhưng để lại cảm giác mệt mỏi và trống rỗng."
             />
 
             <HedonicScaleCard 
               mode="slow"
               title="Slow Dopamine (Kỷ luật & Thể thao)"
-              description={"- Tập luyện thể chất, chạy bộ, đọc sách\n- Thử thách khó chịu lành mạnh ban đầu\n- Mang lại bình yên sâu sắc và tự hào thực sự"}
+              description="Tập luyện, chạy bộ, đọc sách — khó chịu ban đầu nhưng mang lại bình yên sâu sắc và tự hào thực sự."
             />
 
           </motion.div>
