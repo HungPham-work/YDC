@@ -50,8 +50,7 @@ function FlipDigit({ digit, prevDigit }: { digit: string; prevDigit: string }) {
         )}
       </AnimatePresence>
 
-      {/* Center divider line */}
-      <div className="absolute left-0 right-0 top-1/2 h-px bg-neutral-700 z-20 pointer-events-none" />
+      
     </div>
   );
 }
