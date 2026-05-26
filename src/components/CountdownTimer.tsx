@@ -8,8 +8,8 @@ function pad(n: number) {
 }
 
 function FlipDigit({ digit, prevDigit }: { digit: string; prevDigit: string }) {
-  const changed = digit !== prevDigit;
-
+  const changed = digit !== prevDigit
+  
   return (
     <div
       style={{ perspective: '200px' }}
