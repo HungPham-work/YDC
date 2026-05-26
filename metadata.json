@@ -1,0 +1,6 @@
+{
+  "name": "Fast Dopamine Workshop",
+  "description": "High-end, minimalist responsive landing page for the FAST DOPAMINE Workshop, inspired by Axion Studio and Apple's premium design aesthetic.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

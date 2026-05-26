@@ -1,0 +1,98 @@
+{
+"hero": {
+"eyebrow": "HỘI THẢO THẦN KINH HỌC",
+"title": "FAST DOPAMINE",
+"subtitle": "Điện thoại đang âm thầm kiểm soát và đánh cắp sự tập trung của bạn",
+"cta": "ĐĂNG KÝ MIỄN PHÍ"
+},
+"eventInfo": [
+{ "id": "time", "icon": "clock", "label": "Thời gian", "value": "8h30 – 11h00", "sub": "Chủ nhật, Cuối tuần này" },
+{ "id": "location", "icon": "map-pin", "label": "Địa điểm", "value": "SOL Cafe", "sub": "181 Trần Quốc Vượng, Cầu Giấy, Hà Nội" },
+{ "id": "fee", "icon": "gift", "label": "Chi phí", "value": "Hoàn toàn MIỄN PHÍ", "sub": "Giới hạn 50 vé đăng ký sớm nhất" }
+],
+"nature": {
+"sectionId": "BẢN CHẤT",
+"title": "Dopamine nhanh và cơn thèm khát vô thức",
+"leftText": "Mỗi lần lướt video ngắn, não bạn nhận một liều dopamine cực nhanh. Không cần nỗ lực, bạn vẫn được giải trí tức thì. Nhưng càng dùng nhiều, não càng chai sạn với niềm vui thực. Đọc sách, trò chuyện, đi dạo dần trở nên nhạt nhẽo.",
+"smallImage": "https://cdn2.tuoitre.vn/thumb_w/1200/471584752817336320/2025/6/21/photo-1750494027857-1750494029501797466322-0-0-424-809-crop-17504942798851351233867.jpg",
+"largeImage": "https://www.inshape.com/_next/image?url=https%3A%2F%2Fcdn.buttercms.com%2F2Ai8Yn2Sl6v7VTIKtLpg&w=3840&q=75",
+"callout": {
+"stat": "200%",
+"text": "Lượng Dopamine tăng vọt khi lướt mạng xã hội rồi lao dốc không phanh. Trạng thái tụt dốc này khiến bạn nhanh chóng mệt mỏi và trống rỗng.",
+"source": "Nghiên cứu Thần kinh học"
+}
+},
+"manipulation": {
+"sectionId": "THAO TÚNG",
+"title": "Cách các ứng dụng đang thao túng tâm lý bạn",
+"cards": [
+{ "emoji": "♾️", "name": "Lướt không điểm dừng", "desc": "Xóa bỏ mọi ranh giới tự nhiên, giữ chân bạn trong trạng thái tìm kiếm không hồi kết." },
+{ "emoji": "🎁", "name": "Hộp quà bí ẩn", "desc": "Giống hệt máy chơi bạc. Bạn tiếp tục lướt vì tò mò video tiếp theo có gì mới lạ." },
+{ "emoji": "▶️", "name": "Tự động phát video", "desc": "Thiết lập chạy tự động trước khi bạn kịp suy nghĩ, tước đoạt quyền tự chủ." },
+{ "emoji": "🔄", "name": "Kéo để cập nhật", "desc": "Kích hoạt phản xạ có điều kiện ăn sâu vào tiềm thức giống như động tác giật máy đánh bạc." }
+]
+},
+"harm": {
+"sectionId": "TÁC HẠI",
+"title": "Hội chứng não TikTok và sự quá tải",
+"stats": [
+{ "number": "47%", "label": "Mất năng lực tập trung sâu", "desc": "Bạn khó lòng đọc hết một trang sách hay rèn luyện liên tục mười phút mà không chạm vào điện thoại." },
+{ "number": "8.25s", "label": "Thời gian chú ý sụt giảm", "desc": "Ngắn hơn cả trí nhớ của một chú cá vàng. Sức chịu đựng bị bào mòn bởi hàng nghìn kích thích siêu ngắn." }
+]
+},
+"mechanism": {
+"sectionId": "CƠ CHẾ",
+"title": "Cân bằng nội môi: Cơn đau đi liền sau khoái cảm",
+"description": "Não bạn có một cán cân vô hình: một bên là khoái cảm, một bên là nỗi đau. Khi bạn nhận quá nhiều kích thích dễ dàng từ điện thoại, não tự động kéo cán cân ngược lại – gây ra cảm giác trống rỗng, mệt mỏi, lo âu. Đó là lý do sau hai tiếng lướt màn hình, bạn không hề vui mà chỉ thấy rã rời."
+},
+"consequence": {
+"sectionId": "HỆ QUẢ",
+"title": "Nghịch lý của chứng nghiện kích thích ngắn",
+"paragraphs": [
+"Thế giới ảo quá hấp dẫn khiến đời thực trở nên nhạt nhẽo. Bạn dễ dàng từ bỏ những mục tiêu lành mạnh:\n- Trì hoãn việc học tập\n- Ngại rèn luyện thể chất\n- Né tránh gặp gỡ bạn bè\nĐây chính là cái bẫy của sự trì hoãn, làm thui chột tương lai của bạn.",
+"Chúng tôi hiểu bạn. Đây không phải lỗi từ sự yếu kém ý chí. Bạn đang đối đầu với những siêu máy tính mạnh nhất hành tinh được thiết kế tinh vi để giữ chân bạn hàng giờ liền."
+]
+},
+"solution": {
+"sectionId": "GIẢI PHÁP",
+"title": "Buổi chia sẻ sẽ mang lại điều gì cho bạn?",
+"items": [
+{ "icon": "shield-check", "title": "Phương pháp Dopamine Detox", "desc": "Cài đặt lại bộ lọc kích thích của não bộ trong bảy ngày bằng phương pháp khoa học chuẩn xác." },
+{ "icon": "link-2", "title": "Xây dựng rào cản thông minh", "desc": "Thiết lập ranh giới tự động để chiến thắng thuật toán mà không cần tốn quá nhiều ý chí." },
+{ "icon": "flame", "title": "Chuyển dịch sang kỷ luật và nỗ lực dài hạn", "desc": "Học cách cân bằng lại não bộ qua các thói quen tốt bền vững: rèn luyện, học sâu và tỉnh thức." }
+],
+"cta": "THAM GIA NGAY - HOÀN TOÀN MIỄN PHÍ"
+},
+"faq": {
+"sectionId": "THẮC MẮC",
+"title": "Giải đáp thắc mắc thường gặp",
+"questions": [
+{
+"q": "Sự kiện có thực sự miễn phí không? Dự án hoạt động bằng cách nào?",
+"a": "Hoàn toàn miễn phí. Đây là hội thảo phi lợi nhuận hướng tới việc nâng cao sức khỏe tinh thần do câu lạc bộ YDC tổ chức."
+},
+{
+"q": "Tôi cần chuẩn bị điều gì trước khi tham gia?",
+"a": "Hãy chuẩn bị một cuốn sổ ghi chép nhỏ, bút viết và một tâm thế cởi mở. Chúng tôi khuyến khích bạn tạm dừng mở điện thoại trong suốt thời gian diễn ra để đạt hiệu quả tối đa."
+},
+{
+"q": "Địa điểm SOL Cafe có bãi gửi xe thuận tiện không?",
+"a": "Quán tọa lạc tại số 181 Trần Quốc Vượng, Cầu Giấy, Hà Nội, có khu vực đỗ xe máy rộng rãi ngay phía trước, bảo vệ trông giữ an tâm và hoàn toàn miễn phí cho khách tham gia."
+},
+{
+"q": "Tôi có thể đăng ký vé đi cùng cho bạn bè hoặc người thân không?",
+"a": "Được. Tuy nhiên, vì số lượng ghế tại quán giới hạn tối đa 50 lượt đăng ký, bạn vui lòng hoàn tất riêng từng biểu mẫu đăng ký để ban tổ chức chuẩn bị chỗ ngồi chu đáo nhất."
+},
+{
+"q": "Bên cạnh kiến thức, tôi nhận được giá trị gì sau buổi chia sẻ?",
+"a": "Bạn sẽ nhận được cẩm nang số Dopamine Detox 7 ngày cầm tay chỉ việc, đồng thời được kết nối vào nhóm đồng hành của YDC để duy trì kỷ luật và thói quen mới sau sự kiện."
+}
+]
+},
+"footer": {
+"eventName": "FAST DOPAMINE WORKSHOP 2026",
+"time": "8h30 – 11h00, Chủ Nhật",
+"location": "SOL Cafe, 181 Trần Quốc Vượng, Cầu Giấy, Hà Nội",
+"copyright": "© Youth Development Club. Bản quyền đã được bảo hộ."
+}
+}
