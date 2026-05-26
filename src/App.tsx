@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import logo from './assets/logo.png';
+import CountdownTimer from './components/CountdownTimer';
 import { 
   Clock, 
   MapPin, 
@@ -244,13 +245,7 @@ export default function App() {
           <p className="text-base sm:text-lg text-gray-600 max-w-xl mx-auto mt-6 leading-relaxed">
             Trung bình mỗi người mở điện thoại 150 lần/ngày. Và không nhớ mình đã làm gì.
           </p>
-          <div className="mt-10">
-            <RollingButton
-              text="Kiểm tra mức độ ảnh hưởng"
-              color="orange"
-              onClick={() => setIsQuizOpen(true)}
-            />
-          </div>
+          <CountdownTimer />
         </div>
 
       </div>
