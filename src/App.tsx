@@ -653,7 +653,7 @@ export default function App() {
             </div>
 
             {/* Right: Google Maps */}
-            <div id="map-section" className="lg:col-span-5 relative self-start">
+            <div ref={registerRef} id="map-section" className="lg:col-span-5 relative self-start">
               <div className="rounded-3xl overflow-hidden border border-gray-200 shadow-xl">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.5580123522136!2d105.7772156468355!3d21.034226037783316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab7de0494ad7%3A0x5609dc970927c834!2sSOL%20CAFE%20%26%20CO-WORKING!5e1!3m2!1svi!2s!4v1779781889609!5m2!1svi!2s"
