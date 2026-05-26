@@ -98,7 +98,7 @@ export default function App() {
     else if (sectionId === 'harm') targetRef = harmRef;
     else if (sectionId === 'consequence') targetRef = consequenceRef;
     else if (sectionId === 'solution') targetRef = solutionRef;
-    else if (sectionId === 'register-section' || sectionId === 'register') targetRef = registerRef;
+    else if (sectionId === 'register-section' || sectionId === 'register' || sectionId === 'map-section') targetRef = registerRef;
     else if (sectionId === 'faq') targetRef = faqRef;
 
     if (targetRef && targetRef.current) {
@@ -167,7 +167,7 @@ export default function App() {
                 <button onClick={() => handleScrollTo('problem')} className="text-xs font-semibold text-gray-600 hover:text-[#FF5722] transition-colors cursor-pointer">Vấn đề</button>
                 <button onClick={() => handleScrollTo('mechanism')} className="text-xs font-semibold text-gray-600 hover:text-[#FF5722] transition-colors cursor-pointer">Cơ chế</button>
                 <button onClick={() => handleScrollTo('solution')} className="text-xs font-semibold text-gray-600 hover:text-[#FF5722] transition-colors cursor-pointer">Giải pháp</button>
-                <button onClick={() => handleScrollTo('register')} className="text-xs font-semibold text-gray-600 hover:text-[#FF5722] transition-colors cursor-pointer">Đăng ký</button>
+                <button onClick={() => handleScrollTo('map-section')} className="text-xs font-semibold text-gray-600 hover:text-[#FF5722] transition-colors cursor-pointer">Địa điểm</button>
               </nav>
             </div>
 
@@ -175,9 +175,9 @@ export default function App() {
             <div className="hidden md:flex items-center space-x-6">
               <LiveClock />
               <RollingButton 
-                text="Đăng ký" 
+                text="Địa điểm" 
                 color="dark" 
-                onClick={() => handleScrollTo('register')} 
+                onClick={() => handleScrollTo('map-section')} 
               />
             </div>
 
@@ -223,9 +223,9 @@ export default function App() {
                 <LiveClock />
               </div>
               <RollingButton 
-                text="Đăng ký" 
+                text="Địa điểm" 
                 color="orange" 
-                onClick={() => handleScrollTo('register')} 
+                onClick={() => handleScrollTo('map-section')} 
               />
             </div>
           </div>
@@ -236,17 +236,17 @@ export default function App() {
           <div className="text-[11px] font-mono tracking-widest uppercase mb-4 text-[#FF5722] font-semibold">
             {contentData.hero.eyebrow} • 2026
           </div>
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight leading-[1.1] text-black">
-            Your attention is no longer yours.
+          <h1 className="text-5xl sm:text-8xl lg:text-8xl font-black tracking-tight leading-[1.1] text-black">
+            Bạn có thật sự<br />làm chủ bản thân?
           </h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-xl mx-auto mt-6 leading-relaxed">
             Trung bình mỗi người mở điện thoại 150 lần/ngày. Và không nhớ mình đã làm gì.
           </p>
           <div className="mt-10">
-            <RollingButton 
-              text="Kiểm tra mức độ ảnh hưởng" 
-              color="orange" 
-              onClick={() => setIsQuizOpen(true)} 
+            <RollingButton
+              text="Kiểm tra mức độ ảnh hưởng"
+              color="orange"
+              onClick={() => setIsQuizOpen(true)}
             />
           </div>
         </div>
@@ -343,12 +343,7 @@ export default function App() {
                   Nguồn: {contentData.nature.callout.source}
                 </span>
               </div>
-
-              <RollingButton 
-                text="Khám phá cơ chế" 
-                color="dark" 
-                onClick={() => handleScrollTo('mechanism')} 
-              />
+              
             </div>
 
             {/* Right Column: Large Image */}
@@ -397,11 +392,7 @@ export default function App() {
             </div>
 
             <div className="pt-3">
-              <RollingButton 
-                text="Tìm hiểu cơ chế cân bằng" 
-                color="dark" 
-                onClick={() => handleScrollTo('mechanism')} 
-              />
+             
             </div>
           </motion.div>
 
@@ -464,12 +455,7 @@ export default function App() {
                 </p>
               </div>
             </div>
-            
-            <RollingButton 
-              text="Đăng ký giải mã tại hội thảo" 
-              color="orange" 
-              onClick={() => handleScrollTo('register-section')} 
-            />
+          
           </motion.div>
 
         </div>
@@ -578,9 +564,9 @@ export default function App() {
             </div>
             
             <RollingButton 
-              text="Đo lường mức độ ảnh hưởng của bạn" 
+              text="Kiểm tra mức độ ảnh hưởng" 
               color="white" 
-              onClick={() => handleScrollTo('register-section')} 
+              onClick={() => setIsQuizOpen(true)} 
             />
           </motion.div>
 
@@ -609,8 +595,8 @@ export default function App() {
 
           <motion.div {...revealProps} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
             <div className="text-sm sm:text-base text-gray-700 leading-relaxed font-light">
-              <p className="mb-6 whitespace-pre-line">
-                {contentData.consequence.paragraphs[0]}
+              <p className="mb-6">
+                Thế giới ảo quá hấp dẫn khiến đời thực nhạt nhẽo. Học tập trì hoãn, thể chất bỏ bê, bạn bè xa dần — tất cả vì một chiếc điện thoại.
               </p>
               
               <div className="mt-8 flex items-center space-x-2 bg-gray-50 border border-gray-100 py-3 px-4 rounded-full w-fit">
@@ -621,7 +607,7 @@ export default function App() {
 
             <div className="text-sm sm:text-base text-gray-600 border-l-4 border-[#FF5722] pl-6 sm:pl-10 py-2 leading-relaxed font-light">
               <p>
-                {contentData.consequence.paragraphs[1]}
+                Đây không phải lỗi của bạn. Bạn đang đối đầu với những cỗ máy tính mạnh nhất hành tinh, được thiết kế để giữ chân bạn.
               </p>
             </div>
           </motion.div>
@@ -688,158 +674,29 @@ export default function App() {
 
             </div>
 
-            {/* Right: Registration Card Special UI Element with precise state */}
-            <div ref={registerRef} id="register-section" className="lg:col-span-5 relative self-start">
-              
-              <div className="absolute -inset-1.5 bg-gradient-to-r from-[#FF5722] to-amber-500 rounded-[30px] blur-lg opacity-25" />
-              
-              <div className="relative bg-white border-2 border-black rounded-[28px] overflow-hidden shadow-2xl p-6 sm:p-8">
-                
-                {/* Visual design accent top strap */}
-                <div className="absolute top-0 left-0 right-0 h-2.5 bg-[#FF5722]" />
-
-                {/* Form header */}
-                <div className="text-left mb-6 pt-2">
-                  <div className="flex items-center space-x-1 text-[#FF5722] font-mono text-xs font-bold uppercase tracking-wider mb-2">
-                    <span className="w-2 h-2 rounded-full bg-[#FF5722] animate-pulse" />
-                    <span>Hạn chót cuối tuần này</span>
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-black font-display text-gray-900 tracking-tight">
-                    ĐĂNG KÝ GIỮ VÉ MIỄN PHÍ VIP
-                  </h3>
-                  <p className="text-xs text-gray-500 font-medium mt-1 leading-tight">
-                    Chỉ còn 12 slot quà tặng tài liệu Dopamine Detox thực chiến tại Hà Nội.
-                  </p>
+            {/* Right: Google Maps */}
+            <div id="map-section" className="lg:col-span-5 relative self-start">
+              <div className="rounded-3xl overflow-hidden border border-gray-200 shadow-xl">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.5580123522136!2d105.7772156468355!3d21.034226037783316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab7de0494ad7%3A0x5609dc970927c834!2sSOL%20CAFE%20%26%20CO-WORKING!5e1!3m2!1svi!2s!4v1779781889609!5m2!1svi!2s"
+                  width="100%"
+                  height="400"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+              <div className="mt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-1">
+                <div>
+                  <p className="text-sm font-bold text-gray-900">SOL Cafe & Co-working</p>
+                  <p className="text-xs text-gray-500 mt-0.5">181 Trần Quốc Vượng, Cầu Giấy, Hà Nội</p>
                 </div>
-
-                {!isSubmitted ? (
-                  <form onSubmit={handleRegisterSubmit} className="space-y-4">
-                    
-                    {/* Error message */}
-                    {formError && (
-                      <div className="bg-red-50 border border-red-100 text-red-700 text-xs py-2.5 px-3.5 rounded-xl font-medium flex items-center space-x-2">
-                        <AlertTriangle className="w-4 h-4 flex-shrink-0 text-red-500" />
-                        <span>{formError}</span>
-                      </div>
-                    )}
-
-                    {/* Inputs */}
-                    <div className="space-y-1">
-                      <label className="text-[11px] font-mono uppercase tracking-wider text-gray-400 font-bold">Họ và tên của bạn</label>
-                      <input 
-                        type="text" 
-                        required
-                        placeholder="Ví dụ: Nguyễn Minh Thư"
-                        value={formData.fullName}
-                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        className="w-full text-xs sm:text-sm border border-gray-200 focus:border-black rounded-xl px-4 py-3 bg-gray-50 focus:bg-white outline-none transition"
-                      />
-                    </div>
-
-                    <div className="space-y-1">
-                      <label className="text-[11px] font-mono uppercase tracking-wider text-gray-400 font-bold">Số điện thoại liên hệ</label>
-                      <input 
-                        type="tel" 
-                        required
-                        placeholder="Ví dụ: 09123456XX"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full text-xs sm:text-sm border border-gray-200 focus:border-black rounded-xl px-4 py-3 bg-gray-50 focus:bg-white outline-none transition"
-                      />
-                    </div>
-
-                    <div className="space-y-1">
-                      <label className="text-[11px] font-mono uppercase tracking-wider text-gray-400 font-bold">Địa chỉ Email nhận thư mời</label>
-                      <input 
-                        type="email" 
-                        required
-                        placeholder="Ví dụ: hotro@samplenewsforce.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full text-xs sm:text-sm border border-gray-200 focus:border-black rounded-xl px-4 py-3 bg-gray-50 focus:bg-white outline-none transition"
-                      />
-                    </div>
-
-                    {/* Target Struggle selection buttons (Actionable UI element) */}
-                    <div className="pt-2">
-                      <label className="text-[11px] font-mono uppercase tracking-wider text-gray-400 font-bold block mb-2">
-                        Thử thách bạn đang đối đầu nhiều nhất?
-                      </label>
-                      <div className="grid grid-cols-2 gap-2">
-                        {struggleOptions.map((opt) => (
-                          <button
-                            key={opt}
-                            type="button"
-                            onClick={() => setSelectedStruggle(opt)}
-                            className={`px-3 py-2.5 rounded-xl text-[10px] sm:text-xs text-left leading-tight font-medium transition cursor-pointer border ${
-                              selectedStruggle === opt
-                                ? 'bg-[#FF5722] text-white border-[#FF5722] shadow-md shadow-orange-100'
-                                : 'bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100 hover:border-gray-300'
-                            }`}
-                          >
-                            {opt}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Submit Button */}
-                    <div className="pt-3">
-                      <RollingButton 
-                        text="ĐĂNG KÝ VÉ MIỄN PHÍ NGAY" 
-                        color="orange"
-                        type="submit"
-                      />
-                    </div>
-                    
-                    <span className="block text-[10px] text-gray-400 font-mono text-center pt-2">
-                      Bằng việc đăng ký, bạn đồng ý nhận thông báo vé điện tử qua SMS.
-                    </span>
-
-                  </form>
-                ) : (
-                  
-                  /* Dynamic Submission Success view */
-                  <div className="text-center py-10 space-y-5">
-                    <div className="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center mx-auto text-emerald-500 border border-emerald-100">
-                      <Check className="w-8 h-8 stroke-[3]" />
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-bold text-gray-900 font-display">
-                        ĐĂNG KÝ THÀNH CÔNG!
-                      </h4>
-                      <p className="text-xs font-mono text-emerald-600 font-bold mt-1 uppercase tracking-widest">
-                        VÉ HOÀN TOÀN MIỄN PHÍ ĐÃ XÁC THỰC
-                      </p>
-                    </div>
-
-                    <div className="bg-gray-50 p-4 border border-gray-100 rounded-2xl text-left text-xs space-y-2 font-light">
-                      <p className="font-bold text-gray-800 text-center pb-1.5 border-b border-gray-200 mb-2">
-                        THÔNG TIN VÉ ĐIỆN TỬ CỦA BẠN
-                      </p>
-                      <div><strong>Người đăng ký:</strong> <span className="font-medium text-gray-900">{formData.fullName}</span></div>
-                      <div><strong>Thời gian:</strong> <span className="font-medium text-gray-900">{contentData.footer.time}</span></div>
-                      <div><strong>Địa điểm:</strong> <span className="font-medium text-gray-900">{contentData.footer.location}</span></div>
-                      <div><strong>Nỗi lo chính:</strong> <span className="font-medium text-[#FF5722]">{selectedStruggle}</span></div>
-                    </div>
-
-                    <p className="text-xs text-gray-500 leading-relaxed font-light">
-                      Chúng tôi đã gửi email cùng thư mời chính thức tới địa chỉ <strong>{formData.email}</strong>. Vui lòng kiểm tra kỹ hộp thư đến hoặc mục thư quảng cáo để đón đọc hướng dẫn chuẩn bị tinh thần tốt nhất.
-                    </p>
-
-                    <button
-                      onClick={() => {
-                        setIsSubmitted(false);
-                        setFormData({ fullName: '', phone: '', email: '' });
-                        setSelectedStruggle('');
-                      }}
-                      className="text-xs text-[#FF5722] font-semibold hover:underline cursor-pointer font-mono"
-                    >
-                      Đăng ký người đi cùng hoặc chỉnh sửa →
-                    </button>
-                  </div>
-                )}
-
+                <RollingButton
+                  text="XEM ĐƯỜNG ĐI"
+                  color="orange"
+                  onClick={() => window.open('https://maps.app.goo.gl/gTtuL2r4HUro2a9a9', '_blank')}
+                />
               </div>
             </div>
 
@@ -881,7 +738,7 @@ export default function App() {
                 <div className="p-5 bg-gray-50 rounded-2xl border border-gray-100">
                   <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-gray-400 block mb-2">HỖ TRỢ THÊM</span>
                   <p className="text-xs text-gray-500 leading-relaxed font-light">
-                    Bạn có câu hỏi chuyên sâu khác? Hãy phản hồi trực tiếp với đội ngũ tư vấn qua hòm thư hỗ trợ sau đăng ký.
+                    Bạn có câu hỏi chuyên sâu khác? Hãy phản hồi trực tiếp với chúng tôi tại hội thảo.
                   </p>
                 </div>
               </motion.div>
@@ -961,7 +818,7 @@ export default function App() {
               </div>
 
               <p className="text-xs text-neutral-500 leading-relaxed max-w-sm mt-3">
-                Hành trình giáo dục chánh niệm ứng dụng & thần kinh học sâu nhằm hỗ trợ cư dân công nghệ thiết lập lại năng lực kiểm soát vận mệnh trong kỷ nguyên lướt vô tận.
+                Hành trình tìm hiểu và quản lý bản thân trong kỷ nguyên lướt vô tận.
               </p>
             </div>
 
@@ -1012,7 +869,7 @@ export default function App() {
       <PopupQuiz 
         isOpen={isQuizOpen} 
         onClose={() => setIsQuizOpen(false)} 
-        onComplete={() => handleScrollTo('register-section')} 
+        onComplete={() => setIsQuizOpen(false)} 
       />
 
       {/* Mobile Sliding Bottom Sheet Menu overlay */}
