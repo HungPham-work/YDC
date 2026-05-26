@@ -110,8 +110,6 @@ export default function PopupQuiz({ isOpen, onClose, onComplete }: PopupQuizProp
         message: "Bộ lọc tâm lý của bạn hoạt động khá hiệu quả. Bạn giữ vững được ranh giới trước cám dỗ số và duy trì kỷ luật lành mạnh.",
         tip: "Hãy tối ưu nốt môi trường xung quanh để chuyển hóa năng lượng này thành hiệu suất đột phá định cư sâu.",
         recommendation: "Bạn đang làm tốt. Hãy đến hội thảo để chia sẻ cách duy trì và tối ưu cuộc sống."
-  };
-}
       };
     }
   };
