@@ -59,10 +59,7 @@ function FlipUnit({ value, label }: { value: number; label: string }) {
   const str = pad(value);
   const prevRef = useRef(str);
   const prev = prevRef.current;
-
-  useEffect(() => {
-    prevRef.current = str;
-  });
+  prevRef.current = str;
 
   return (
     <div className="flex flex-col items-center gap-2">
