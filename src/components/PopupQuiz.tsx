@@ -88,7 +88,8 @@ export default function PopupQuiz({ isOpen, onClose, onComplete }: PopupQuizProp
         color: "text-red-500 bg-red-50 border-red-100",
         barColor: "bg-red-500",
         message: "Não bộ của bạn đã hoàn toàn thích nghi với các thuật toán video kích thích nhanh. Khả năng chịu đựng sự nhàm chán lành mạnh gần như biến mất, dẫn đến sự trì hoãn sâu và uể oải mãn tính.",
-        tip: "Bạn cực kỳ cần thiết để khởi động một kỳ Dopamine Detox khoa học."
+        tip: "Bạn cực kỳ cần thiết để khởi động một kỳ Dopamine Detox khoa học.",
+        recommendation: "Bạn cần một kỳ Dopamine Detox ngay. Tham gia hội thảo để được hướng dẫn cụ thể."
       };
     } else if (score >= 5) {
       return {
@@ -97,7 +98,8 @@ export default function PopupQuiz({ isOpen, onClose, onComplete }: PopupQuizProp
         color: "text-[#FF5722] bg-[#FF5722]/5 border-[#FF5722]/10",
         barColor: "bg-[#FF5722]",
         message: "Bạn đang đứng ở ranh giới của sự mất tự chủ. Thế giới thực bắt đầu cảm thấy nhạt nhẽo và bạn có xu hướng dời lịch học, lịch tập sang hôm sau.",
-        tip: "Hãy thiết lập các rào cản thông minh ban đầu trước khi tình trạng bão hòa trầm trọng hơn."
+        tip: "Hãy thiết lập các rào cản thông minh ban đầu trước khi tình trạng bão hòa trầm trọng hơn.",
+        recommendation: "Hãy đến hội thảo để tìm hiểu cách thiết lập rào cản và cải thiện chất lượng sống."
       };
     } else {
       return {
@@ -106,7 +108,10 @@ export default function PopupQuiz({ isOpen, onClose, onComplete }: PopupQuizProp
         color: "text-emerald-600 bg-emerald-50 border-emerald-100",
         barColor: "bg-emerald-500",
         message: "Bộ lọc tâm lý của bạn hoạt động khá hiệu quả. Bạn giữ vững được ranh giới trước cám dỗ số và duy trì kỷ luật lành mạnh.",
-        tip: "Hãy tối ưu nốt môi trường xung quanh để chuyển hóa năng lượng này thành hiệu suất đột phá định cư sâu."
+        tip: "Hãy tối ưu nốt môi trường xung quanh để chuyển hóa năng lượng này thành hiệu suất đột phá định cư sâu.",
+        recommendation: "Bạn đang làm tốt. Hãy đến hội thảo để chia sẻ cách duy trì và tối ưu cuộc sống."
+  };
+}
       };
     }
   };
@@ -234,14 +239,7 @@ export default function PopupQuiz({ isOpen, onClose, onComplete }: PopupQuizProp
                     >
                       Làm lại trắc nghiệm
                     </button>
-                    <RollingButton
-                      text="Đăng ký nhận vé & tài liệu"
-                      color="orange"
-                      onClick={() => {
-                        onComplete(totalScore);
-                        onClose();
-                      }}
-                    />
+                    
                   </div>
                 </div>
               )}
