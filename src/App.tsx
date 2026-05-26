@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import logo from './assets/logo.png';
 import { 
   Clock, 
   MapPin, 
@@ -155,7 +156,7 @@ export default function App() {
             <div className="flex items-center space-x-6 sm:space-x-8">
               <a href="#" className="flex items-center space-x-2.5 cursor-pointer group">
                 <div className="w-9 h-9 sm:w-10 h-10 bg-black rounded-full flex items-center justify-center font-display font-black text-sm text-white tracking-tighter transition-transform group-hover:scale-105">
-                  FD
+                  <img src={logo} alt="logo" className="w-full h-full object-cover" />
                 </div>
                 <div className="leading-none">
                   <span className="text-[10px] font-mono font-bold text-[#FF5722] tracking-widest block">2026</span>
@@ -203,7 +204,7 @@ export default function App() {
           <div className="bg-black/90 backdrop-blur-lg rounded-full px-4 py-2 border border-neutral-800 shadow-2xl flex justify-between items-center text-white">
             <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center space-x-2 text-left cursor-pointer group">
               <div className="w-8 h-8 rounded-full bg-[#FF5722] text-white flex items-center justify-center font-display font-bold text-xs">
-                FD
+              <img src={logo} alt="logo" className="w-full h-full object-cover" />
               </div>
               <div>
                 <span className="text-[10px] font-mono font-medium text-[#FF5722] block tracking-widest uppercase">FAST DOPAMINE</span>
@@ -787,7 +788,7 @@ export default function App() {
             <div className="md:col-span-5 space-y-4">
               <div className="flex items-center space-x-2.5">
                 <div className="w-10 h-10 bg-white text-black font-display font-black text-sm rounded-full flex items-center justify-center">
-                  FD
+                  <img src={logo} alt="logo" className="w-full h-full object-cover" />
                 </div>
                 <div className="leading-none text-white">
                   <span className="text-[10px] font-mono text-[#FF5722] block tracking-widest font-bold uppercase">WORKSHOP</span>
