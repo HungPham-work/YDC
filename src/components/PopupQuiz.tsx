@@ -225,7 +225,7 @@ export default function PopupQuiz({ isOpen, onClose, onComplete }: PopupQuizProp
                     <div>
                       <h4 className="text-xs font-bold text-gray-900 mb-0.5">Hành động được đề xuất:</h4>
                       <p className="text-[11px] sm:text-xs text-gray-500 leading-snug font-light">
-                        Tham gia buổi chia sẻ <strong className="font-semibold">FAST DOPAMINE WORKSHOP</strong> cuối tuần này để nhận tài liệu hướng dẫn thải độc 7 ngày chi tiết.
+                        {result.recommendation}
                       </p>
                     </div>
                   </div>
