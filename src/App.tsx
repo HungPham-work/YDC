@@ -569,7 +569,7 @@ export default function App() {
           </motion.div>
 
           <motion.h2 {...revealProps} className="text-3xl sm:text-5xl lg:text-6xl font-display font-black tracking-tight text-gray-900 mb-12 lg:mb-16 max-w-4xl leading-tight">
-            Nghịch lý Doomer Culture — <span className="text-gray-400 font-light italic">Lười biếng hiện sinh</span> trong sự bão hòa khoái cảm.
+            Nghịch lý Doomer Culture — Khi đời thực <span className="text-gray-400 font-light italic">...trở nên nhạt nhẽo.</span>
           </motion.h2>
 
           <motion.div {...revealProps} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
