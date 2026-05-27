@@ -68,7 +68,7 @@ export default function LiveDopamineStat() {
 }, [isVisible]);
 
   const hoursWasted = (secondsElapsed * HOURS_PER_SECOND).toLocaleString('vi-VN');
-  const activeUsers = (BASE_ACTIVE_USERS + secondsElapsed * 120).toLocaleString('vi-VN');
+  const activeUsersStr = activeUsers.toLocaleString('vi-VN');
 
   return (
     <div ref={ref} className="flex flex-col gap-4 h-full">
@@ -106,7 +106,7 @@ export default function LiveDopamineStat() {
           Người đang lướt ngay lúc này
         </span>
         <div className="mt-1">
-          <SlotNumber value={activeUsers} />
+          <SlotNumber value={activeUsersStr} />
         </div>
         <span className="text-xs text-gray-500 font-light">người dùng toàn cầu</span>
       </motion.div>
