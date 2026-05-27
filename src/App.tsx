@@ -165,10 +165,10 @@ export default function App() {
 
               {/* Desktop Nav links with new names */}
               <nav className="hidden md:flex items-center space-x-6">
-                <button onClick={() => handleScrollTo('problem')} className="text-xs font-semibold text-gray-600 hover:text-[#FF5722] transition-colors cursor-pointer">Vấn đề</button>
-                <button onClick={() => handleScrollTo('mechanism')} className="text-xs font-semibold text-gray-600 hover:text-[#FF5722] transition-colors cursor-pointer">Cơ chế</button>
-                <button onClick={() => handleScrollTo('solution')} className="text-xs font-semibold text-gray-600 hover:text-[#FF5722] transition-colors cursor-pointer">Giải pháp</button>
-                <button onClick={() => handleScrollTo('map-section')} className="text-xs font-semibold text-gray-600 hover:text-[#FF5722] transition-colors cursor-pointer">Địa điểm</button>
+                <button onClick={() => handleScrollTo('problem')} className="text-sm font-semibold text-gray-600 hover:text-[#FF5722] transition-colors cursor-pointer">Vấn đề</button>
+                <button onClick={() => handleScrollTo('mechanism')} className="text-sm font-semibold text-gray-600 hover:text-[#FF5722] transition-colors cursor-pointer">Cơ chế</button>
+                <button onClick={() => handleScrollTo('solution')} className="text-sm font-semibold text-gray-600 hover:text-[#FF5722] transition-colors cursor-pointer">Giải pháp</button>
+                <button onClick={() => handleScrollTo('map-section')} className="text-sm font-semibold text-gray-600 hover:text-[#FF5722] transition-colors cursor-pointer">Địa điểm</button>
               </nav>
             </div>
 
