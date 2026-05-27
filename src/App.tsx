@@ -156,7 +156,7 @@ export default function App() {
             {/* Left: Round Logo & Nav Links */}
             <div className="flex items-center space-x-6 sm:space-x-8">
               <a href="#" className="flex items-center space-x-2.5 cursor-pointer group">
-                <div className="w-9 h-9 sm:w-10 h-10 bg-black rounded-full flex items-center justify-center font-display font-black text-sm text-white tracking-tighter transition-transform group-hover:scale-105">
+                <div className="w-10 h-10 sm:w-12 h-12 bg-black rounded-full flex items-center justify-center font-display font-black text-sm text-white tracking-tighter transition-transform group-hover:scale-105">
                   <img src={logo} alt="logo" className="w-full h-full object-cover" />
                 </div>
                 <div className="leading-none">
@@ -204,7 +204,7 @@ export default function App() {
         }`}>
           <div className="bg-black/90 backdrop-blur-lg rounded-full px-4 py-2 border border-neutral-800 shadow-2xl flex justify-between items-center text-white">
             <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center space-x-2 text-left cursor-pointer group">
-              <div className="w-8 h-8 rounded-full bg-[#FF5722] text-white flex items-center justify-center font-display font-bold text-xs">
+              <div className="w-10 h-10 rounded-full bg-[#FF5722] text-white flex items-center justify-center font-display font-bold text-xs">
               <img src={logo} alt="logo" className="w-full h-full object-cover" />
               </div>
               <div>
