@@ -778,9 +778,7 @@ export default function App() {
             {/* Branding segment */}
             <div className="md:col-span-5 space-y-4">
               <div className="flex items-center space-x-2.5">
-                <div className="w-10 h-10 bg-white text-black font-display font-black text-sm rounded-full flex items-center justify-center">
-                  <img src={logo} alt="logo" className="w-full h-full object-cover" />
-                </div>
+               <img src={logo} alt="logo" className="w-10 h-10 object-contain" />
                 <div className="leading-none text-white">
                   <span className="text-[10px] font-mono text-[#FF5722] block tracking-widest font-bold uppercase">WORKSHOP</span>
                   <span className="text-sm font-bold tracking-tight">FAST DOPAMINE 2026</span>
