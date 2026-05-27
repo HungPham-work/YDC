@@ -113,12 +113,12 @@ export default function CountdownTimer({ onOpenQuiz }: Props) {
       <span className="text-[10px] font-mono uppercase tracking-widest text-gray-400 mb-5">
         Hội thảo bắt đầu sau
       </span>
-      <div className="flex items-end gap-3 sm:gap-4">
+      <div className="flex items-end gap-1.5 sm:gap-4">
         {units.map((u, i) => (
           <React.Fragment key={u.label}>
             <FlipUnit value={u.value} label={u.label} />
             {i < units.length - 1 && (
-              <span className="text-2xl font-black text-gray-300 mb-6 sm:mb-7 leading-none">:</span>
+              <span className="text-lg sm:text-2xl font-black text-gray-300 mb-5 sm:mb-7 leading-none">:</span>
             )}
           </React.Fragment>
         ))}
