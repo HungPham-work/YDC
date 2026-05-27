@@ -118,7 +118,7 @@ export default function CountdownTimer({ onOpenQuiz }: Props) {
           <React.Fragment key={u.label}>
             <FlipUnit value={u.value} label={u.label} />
             {i < units.length - 1 && (
-              <span className="text-2xl font-black text-gray-300 mb-7 leading-none">:</span>
+              <span className="text-2xl font-black text-gray-300 mb-6 sm:mb-7 leading-none">:</span>
             )}
           </React.Fragment>
         ))}
