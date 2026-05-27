@@ -7,6 +7,21 @@
   --font-mono: "Be Vietnam Pro", ui-monospace, SFMono-Regular, monospace;
 }
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-main: #F8FAFC;
+
+  --blue-primary: #1A237E;
+  --blue-soft: #2F6BFF;
+
+  --red-primary: #FF5A5F;
+
+  --text-main: #0A0A0A;
+  --text-soft: #64748B;
+}
 .font-display {
   font-family: "Space Grotesk", sans-serif;
 }
