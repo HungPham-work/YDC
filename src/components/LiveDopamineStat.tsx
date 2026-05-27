@@ -45,6 +45,7 @@ function SlotNumber({ value, dark }: { value: string; dark?: boolean }) {
 
 export default function LiveDopamineStat() {
   const [secondsElapsed, setSecondsElapsed] = useState(0);
+  const [activeUsers, setActiveUsers] = useState(BASE_ACTIVE_USERS);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -58,10 +59,13 @@ export default function LiveDopamineStat() {
   }, []);
 
   useEffect(() => {
-    if (!isVisible) return;
-    const interval = setInterval(() => setSecondsElapsed(s => s + 1), 1000);
-    return () => clearInterval(interval);
-  }, [isVisible]);
+  if (!isVisible) return;
+  const interval = setInterval(() => {
+    setSecondsElapsed(s => s + 1);
+    setActiveUsers(u => u + Math.floor((Math.random() - 0.45) * 100_000));
+  }, 1000);
+  return () => clearInterval(interval);
+}, [isVisible]);
 
   const hoursWasted = (secondsElapsed * HOURS_PER_SECOND).toLocaleString('vi-VN');
   const activeUsers = (BASE_ACTIVE_USERS + secondsElapsed * 120).toLocaleString('vi-VN');
