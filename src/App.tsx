@@ -231,11 +231,11 @@ export default function App() {
         </div>
 
         {/* Hero Content - centered narrative storytelling (Craft.do style) */}
-        <div className="relative z-10 max-w-4xl mx-auto px-4">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <div className="text-[11px] font-mono tracking-widest uppercase mb-4 text-[#FF5722] font-semibold">
             {contentData.hero.eyebrow} • 2026
           </div>
-          <h1 className="text-5xl sm:text-8xl lg:text-8xl font-black tracking-tight leading-[1.1] text-black">
+          <h1 className="text-5xl sm:text-8xl lg:text-8xl font-black tracking-tight leading-[1.1] text-black mx-auto">
             Bạn có thật sự<br />làm chủ bản thân?
           </h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-xl mx-auto mt-6 leading-relaxed">
