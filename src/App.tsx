@@ -156,7 +156,7 @@ export default function App() {
             {/* Left: Round Logo & Nav Links */}
             <div className="flex items-center space-x-6 sm:space-x-8">
               <a href="#" className="flex items-center space-x-2.5 cursor-pointer group">
-                <img src={logo} alt="logo" className="w-12 h-12 sm:w-14 sm:h-14 object-contain rounded-full transition-transform group-hover:scale-105" />
+                <img src={logo} alt="logo" className="w-12 h-12 sm:w-14 sm:h-14 object-contain transition-transform group-hover:scale-105" />
                 <div className="leading-none">
                   <span className="text-[10px] font-mono font-bold text-[#FF5722] tracking-widest block">2026</span>
                   <span className="text-sm font-bold text-black tracking-tight">FAST DOPAMINE</span>
@@ -202,7 +202,7 @@ export default function App() {
         }`}>
           <div className="bg-black/90 backdrop-blur-lg rounded-full px-4 py-2 border border-neutral-800 shadow-2xl flex justify-between items-center text-white">
             <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center space-x-2 text-left cursor-pointer group">
-              <img src={logo} alt="logo" className="w-10 h-10 object-contain rounded-full" />
+              <img src={logo} alt="logo" className="w-10 h-10 object-contain" />
               <div>
                 <span className="text-[10px] font-mono font-medium text-[#FF5722] block tracking-widest uppercase">FAST DOPAMINE</span>
                 <span className="text-xs font-bold text-gray-200">Não bộ bị đánh cắp</span>
