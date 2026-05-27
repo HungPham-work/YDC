@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import logo from './assets/logo.png';
 import CountdownTimer from './components/CountdownTimer';
+import ShibaMascot from './components/ShibaMascot';
 import { 
   Clock, 
   MapPin, 
@@ -861,7 +862,7 @@ export default function App() {
       >
         <ArrowUp className="w-5 h-5 text-white" />
       </button>
-
+   <ShibaMascot />
     </div>
   );
 }
