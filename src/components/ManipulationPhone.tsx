@@ -87,7 +87,7 @@ export default function ManipulationPhone() {
   const onTouchEnd   = () => {
     if (pullY > 30) {
       setIsPulling(true);
-      setActivePattern('pull');
+     if (scrollCount.current <= 1) setActivePattern('pull');
       setTimeout(() => { setIsPulling(false); setPullY(0); }, 1000);
     } else {
       setPullY(0);
@@ -101,7 +101,7 @@ export default function ManipulationPhone() {
   if (scrollTop < 20) return;
   if (scrollCount.current === 0) {
     scrollCount.current = 1;
-    setActivePattern('pull');
+    // không set pattern ở đây — để onTouchEnd xử lý
   } else if (scrollCount.current === 1) {
     scrollCount.current = 2;
     setActivePattern('infinite');
