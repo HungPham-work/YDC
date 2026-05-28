@@ -45,6 +45,7 @@ export default function ManipulationPhone() {
   const hasTriggeredPull = useRef(false);
   const lockPatternRef = useRef(false);
   const touchStartY = useRef(0);
+  const videoStepCount = useRef(0);  
 
   // Pause all, play current
 const syncPlay = useCallback((idx: number, spd?: number) => {
@@ -64,6 +65,7 @@ const syncPlay = useCallback((idx: number, spd?: number) => {
 useEffect(() => {
   setActivePattern('autoplay');
   phase.current = 'autoplay';
+  videoStepCount.current = 0;       // 👈 thêm dòng này
   hasScrolledOnce.current = false;
   setSpeed(1);
   setShowSpeedPattern(false);
@@ -134,31 +136,27 @@ const scrollLock = useRef(false);
 
 const onScroll = () => {
   if (!feedRef.current) return;
-
   const scrollTop = feedRef.current.scrollTop;
-
-  // xác định index video
   const idx = Math.round(scrollTop / ITEM_HEIGHT);
 
-  // chỉ update khi đổi video
   if (idx !== activeIdx) {
     setActiveIdx(idx);
     syncPlay(idx);
-  }
 
-  // pattern logic giữ nguyên
-  if (scrollTop < 20) return;
-
-  if (!hasScrolledOnce.current) {
-    hasScrolledOnce.current = true;
-    phase.current = 'pull';
-    setActivePattern('pull');
-    return;
-  }
-
-  if (phase.current === 'pull') {
-    phase.current = 'infinite';
-    setActivePattern('infinite');
+    // Chỉ chuyển pattern khi thực sự lướt đến video mới
+    // Lần đầu từ video 0 → 1: hiện Pull‑to‑Refresh
+    if (videoStepCount.current === 0 && idx === 1) {
+      videoStepCount.current = 1;
+      phase.current = 'pull';
+      setActivePattern('pull');
+    }
+    // Lần hai từ video 1 → 2: hiện Infinite Scroll và khoá vĩnh viễn
+    else if (videoStepCount.current === 1 && idx === 2) {
+      videoStepCount.current = 2;
+      phase.current = 'infinite';
+      setActivePattern('infinite');
+    }
+    // Sau đó giữ nguyên pattern hiện tại (không đổi nữa)
   }
 };
   
