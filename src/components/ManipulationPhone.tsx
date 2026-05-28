@@ -31,6 +31,7 @@ export default function ManipulationPhone() {
   const feedRef        = useRef<HTMLDivElement>(null);
   const videoRefs      = useRef<(HTMLVideoElement | null)[]>([]);
   const [activeIdx, setActiveIdx]   = useState(0);
+  const ITEM_HEIGHT = 504;
   const [liked, setLiked]           = useState<Record<number, boolean>>({});
   const [speed, setSpeed]           = useState(1);
   const [isPulling, setIsPulling]   = useState(false);
@@ -46,38 +47,18 @@ export default function ManipulationPhone() {
   const touchStartY = useRef(0);
 
   // Pause all, play current
-const syncPlay = useCallback((idx: number, spd: number) => {
+const syncPlay = useCallback((idx: number, spd?: number) => {
+  const finalSpeed = spd ?? speed;
+
   videoRefs.current.forEach((v, i) => {
     if (!v) return;
-    v.playbackRate = spd;
+
+    v.playbackRate = finalSpeed;
+
     if (i === idx) v.play().catch(() => {});
     else v.pause();
   });
-}, []);
-
-// IntersectionObserver — detect which video is visible
-useEffect(() => {
-  const observers: IntersectionObserver[] = [];
-
-  videoRefs.current.forEach((v, i) => {
-    if (!v) return;
-
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.intersectionRatio > 0.6) {
-          setActiveIdx(i);
-          syncPlay(i, videoRefs.current[i]?.playbackRate ?? speed);
-        }
-      },
-      { threshold: 0.6, root: feedRef.current }
-    );
-
-    obs.observe(v);
-    observers.push(obs);
-  });
-
-  return () => observers.forEach(o => o.disconnect());
-}, [speed, syncPlay]);
+}, [speed]);
 
 // INIT STATE (autoplay chỉ chạy 1 lần)
 useEffect(() => {
@@ -149,10 +130,23 @@ speedTimeoutRef.current = setTimeout(() => {
 };
 
 // Scroll → pattern state machine
+const scrollLock = useRef(false);
+
 const onScroll = () => {
   if (!feedRef.current) return;
 
-  const { scrollTop } = feedRef.current;
+  const scrollTop = feedRef.current.scrollTop;
+
+  // xác định index video
+  const idx = Math.round(scrollTop / ITEM_HEIGHT);
+
+  // chỉ update khi đổi video
+  if (idx !== activeIdx) {
+    setActiveIdx(idx);
+    syncPlay(idx);
+  }
+
+  // pattern logic giữ nguyên
   if (scrollTop < 20) return;
 
   if (!hasScrolledOnce.current) {
