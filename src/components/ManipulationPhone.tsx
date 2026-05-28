@@ -52,7 +52,7 @@ const FAKE_VIDEOS = [
     likes: '142.3K',
     comments: '2.1K',
     shares: '8.4K',
-    img: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&q=80',
+    img: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&h=711&fit=crop&q=90',
     song: 'Nhạc nền - Trending 🎵',
   },
   {
@@ -62,7 +62,7 @@ const FAKE_VIDEOS = [
     likes: '89.7K',
     comments: '934',
     shares: '3.2K',
-    img: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=80',
+    img: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=711&fit=crop&q=90',
     song: 'Lofi Morning - Chill Beats',
   },
   {
@@ -72,7 +72,7 @@ const FAKE_VIDEOS = [
     likes: '231.1K',
     comments: '5.6K',
     shares: '19.8K',
-    img: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&q=80',
+    img: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&h=711&fit=crop&q=90',
     song: 'Epic Gaming Music - No Copyright',
   },
   {
@@ -82,7 +82,7 @@ const FAKE_VIDEOS = [
     likes: '67.4K',
     comments: '1.2K',
     shares: '4.1K',
-    img: 'https://images.unsplash.com/photo-1555126634-323283e090fa?w=400&q=80',
+    img: 'https://images.unsplash.com/photo-1555126634-323283e090fa?w=400&h=711&fit=crop&q=90',
     song: 'Vui Vẻ - Nhạc Việt',
   },
 ];
