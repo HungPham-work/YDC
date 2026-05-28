@@ -73,6 +73,19 @@ useEffect(() => {
   setIsPulling(false);
 }, []);
 
+// Phát video tương ứng với activeIdx
+useEffect(() => {
+  const currentVideo = videoRefs.current[activeIdx];
+  if (currentVideo) {
+    currentVideo.playbackRate = speed;
+    currentVideo.play().catch(() => {});
+  }
+  // Dừng các video khác
+  videoRefs.current.forEach((v, i) => {
+    if (v && i !== activeIdx) v.pause();
+  });
+}, [activeIdx, speed]);
+
   // Speed change
   const toggleSpeed = () => {
   const next = speed === 1 ? 2 : 1;
