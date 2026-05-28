@@ -90,14 +90,6 @@ useEffect(() => {
   setIsPulling(false);
 }, []);
 
-        { threshold: 0.6, root: feedRef.current }
-      );
-      obs.observe(v);
-      observers.push(obs);
-    });
-    return () => observers.forEach(o => o.disconnect());
-  }, [speed, syncPlay]);
-
   // Speed change
   const toggleSpeed = () => {
   const next = speed === 1 ? 2 : 1;
