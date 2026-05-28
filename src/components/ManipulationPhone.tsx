@@ -165,6 +165,41 @@ export default function ManipulationPhone() {
           <button onClick={() => handleTap('feed')}
             className="absolute inset-0 z-10 w-full h-full cursor-pointer" style={{ background: 'transparent' }} />
 
+          {/* ── HOTSPOT PULSE DOTS ── */}
+          {DARK_PATTERNS.map(p => (
+            <div
+              key={`hotspot-${p.id}`}
+              className="absolute z-30 pointer-events-none"
+              style={{
+                ...(p.badgePos as React.CSSProperties),
+                // offset slightly so dot appears at corner of badge
+              }}
+            >
+              <AnimatePresence>
+                {active !== p.id && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="relative flex items-center justify-center w-5 h-5"
+                  >
+                    {/* Outer ping */}
+                    <motion.div
+                      animate={{ scale: [1, 2.2], opacity: [0.6, 0] }}
+                      transition={{ duration: 1.4, repeat: Infinity, ease: 'easeOut', delay: DARK_PATTERNS.findIndex(x => x.id === p.id) * 0.3 }}
+                      className="absolute w-4 h-4 rounded-full"
+                      style={{ background: p.color }}
+                    />
+                    {/* Inner dot */}
+                    <div className="w-3 h-3 rounded-full border-2 border-white shadow-md z-10"
+                      style={{ background: p.color }} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ))}
+
           {/* ── FLOATING BADGES on phone ── */}
           {DARK_PATTERNS.map(p => (
             <AnimatePresence key={p.id}>
@@ -272,7 +307,7 @@ export default function ManipulationPhone() {
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                 className="text-center py-4">
                 <p className="text-[11px] text-gray-400 font-mono">
-                  Tap vào phone để khám phá từng chiêu thức
+                  Tap vào các chấm trên phone để khám phá
                 </p>
               </motion.div>
             )}
