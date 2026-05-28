@@ -42,6 +42,7 @@ export default function ManipulationPhone() {
   const [showSpeedPattern, setShowSpeedPattern] = useState(false);
   const hasScrolledOnce = useRef(false);
   const hasTriggeredPull = useRef(false);
+  const lockPatternRef = useRef(false);
   const touchStartY = useRef(0);
 
   // Pause all, play current
@@ -62,7 +63,31 @@ export default function ManipulationPhone() {
       const obs = new IntersectionObserver(
         ([entry]) => { if (entry.intersectionRatio > 0.6) {
   setActiveIdx(i);
-  syncPlay(i, speed);
+syncPlay(i, videoRefs.current[i]?.playbackRate ?? speed);
+}
+      },
+      { threshold: 0.6, root: feedRef.current }
+    );
+
+    obs.observe(v);
+    observers.push(obs);
+  });
+
+  return () => observers.forEach(o => o.disconnect());
+}, [speed, syncPlay]);
+
+// INIT STATE (autoplay chỉ chạy 1 lần)
+useEffect(() => {
+  setActivePattern('autoplay');
+  phase.current = 'autoplay';
+  hasScrolledOnce.current = false;
+  setSpeed(1);
+  setShowSpeedPattern(false);
+  setPullY(0);
+  setIsPulling(false);
+}, []);
+
+if (lockPatternRef.current) return;
 } },
         { threshold: 0.6, root: feedRef.current }
       );
@@ -84,19 +109,23 @@ export default function ManipulationPhone() {
   setShowSpeedPattern(true);
   setActivePattern('speed');
 
-  if (speedTimeoutRef.current) {
-    clearTimeout(speedTimeoutRef.current);
+ lockPatternRef.current = true;
+
+if (speedTimeoutRef.current) {
+  clearTimeout(speedTimeoutRef.current);
+}
+
+speedTimeoutRef.current = setTimeout(() => {
+  lockPatternRef.current = false;
+
+  setShowSpeedPattern(false);
+
+  if (phase.current === 'infinite') {
+    setActivePattern('infinite');
+  } else if (phase.current === 'pull') {
+    setActivePattern('pull');
   }
-
-  speedTimeoutRef.current = setTimeout(() => {
-    setShowSpeedPattern(false);
-
-    if (phase.current === 'pull') {
-      setActivePattern('pull');
-    } else if (phase.current === 'infinite') {
-      setActivePattern('infinite');
-    }
-  }, 3000);
+}, 3000);
 };
 
   // Pull to refresh — touch
@@ -135,13 +164,16 @@ export default function ManipulationPhone() {
   if (scrollTop < 20) return;
 
   if (!hasScrolledOnce.current) {
-    hasScrolledOnce.current = true;
+  hasScrolledOnce.current = true;
+  phase.current = 'pull';
+  setActivePattern('pull');
+  return;
+}
 
-    phase.current = 'pull';
-    setActivePattern('pull');
-
-    return;
-  }
+if (phase.current === 'pull') {
+  phase.current = 'infinite';
+  setActivePattern('infinite');
+}
 
   if (phase.current === 'pull') {
     phase.current = 'infinite';
