@@ -36,8 +36,9 @@ export default function ManipulationPhone() {
   const [isPulling, setIsPulling]   = useState(false);
   const [pullY, setPullY]           = useState(0);
   const [activePattern, setActivePattern] = useState<string | null>('autoplay');
-  const phase = useRef<'autoplay' | 'waitPull' | 'pull' | 'infinite'>('autoplay');
+  const phase = useRef<'autoplay' | 'pull' | 'infinite'>('autoplay');
   const isPullingGesture = useRef(false);
+  const speedTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const touchStartY = useRef(0);
 
   // Pause all, play current
@@ -70,20 +71,27 @@ export default function ManipulationPhone() {
 
   // Speed change
   const toggleSpeed = () => {
-    const next = speed === 1 ? 2 : 1;
-    setSpeed(next);
-    const v = videoRefs.current[activeIdx];
-    if (v) v.playbackRate = next;
-    setActivePattern('speed');
+  const next = speed === 1 ? 2 : 1;
 
-setTimeout(() => {
-  setActivePattern(
-    phase.current === 'infinite'
-      ? 'infinite'
-      : 'autoplay'
-  );
-}, 3000);
-  };
+  setSpeed(next);
+
+  const v = videoRefs.current[activeIdx];
+  if (v) v.playbackRate = next;
+
+  setActivePattern('speed');
+
+  if (speedTimeoutRef.current) {
+    clearTimeout(speedTimeoutRef.current);
+  }
+
+  speedTimeoutRef.current = setTimeout(() => {
+    if (phase.current === 'pull') {
+      setActivePattern('pull');
+    } else if (phase.current === 'infinite') {
+      setActivePattern('infinite');
+    }
+  }, 3000);
+};
 
   // Pull to refresh — touch
   const onTouchStart = (e: React.TouchEvent) => {
@@ -98,17 +106,19 @@ setTimeout(() => {
   setPullY(Math.min(delta * 0.4, 48));
 }
   };
-  const onTouchEnd   = () => {
-    if (isPullingGesture.current && pullY > 30) {
-      setIsPulling(true);
-    if (phase.current === 'waitPull') {
-  phase.current = 'pull';
-}
-      setTimeout(() => { setIsPulling(false); setPullY(0); }, 1000);
-    } else {
+  const onTouchEnd = () => {
+  if (isPullingGesture.current && pullY > 30) {
+    setIsPulling(true);
+    setTimeout(() => {
+      setIsPulling(false);
       setPullY(0);
-    }
-  };
+    }, 1000);
+  } else {
+    setPullY(0);
+  }
+
+  isPullingGesture.current = false;
+};
 
   // Scroll → flag infinite scroll pattern
   const onScroll = () => {
@@ -117,7 +127,7 @@ setTimeout(() => {
   if (scrollTop < 20) return;
 
   if (phase.current === 'autoplay') {
-  phase.current = 'waitPull';
+  phase.current = 'pull';
   setActivePattern('pull');
 } else if (phase.current === 'pull') {
   phase.current = 'infinite';
