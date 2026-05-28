@@ -46,25 +46,28 @@ export default function ManipulationPhone() {
   const touchStartY = useRef(0);
 
   // Pause all, play current
-  const syncPlay = useCallback((idx: number, spd: number) => {
-    videoRefs.current.forEach((v, i) => {
-      if (!v) return;
-      v.playbackRate = spd;
-      if (i === idx) { v.play().catch(() => {}); }
-      else { v.pause(); }
-    });
-  }, []);
+const syncPlay = useCallback((idx: number, spd: number) => {
+  videoRefs.current.forEach((v, i) => {
+    if (!v) return;
+    v.playbackRate = spd;
+    if (i === idx) v.play().catch(() => {});
+    else v.pause();
+  });
+}, []);
 
-  // IntersectionObserver — detect which video is visible
-  useEffect(() => {
-    const observers: IntersectionObserver[] = [];
-    videoRefs.current.forEach((v, i) => {
-      if (!v) return;
-      const obs = new IntersectionObserver(
-        ([entry]) => { if (entry.intersectionRatio > 0.6) {
-  setActiveIdx(i);
-syncPlay(i, videoRefs.current[i]?.playbackRate ?? speed);
-}
+// IntersectionObserver — detect which video is visible
+useEffect(() => {
+  const observers: IntersectionObserver[] = [];
+
+  videoRefs.current.forEach((v, i) => {
+    if (!v) return;
+
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.intersectionRatio > 0.6) {
+          setActiveIdx(i);
+          syncPlay(i, videoRefs.current[i]?.playbackRate ?? speed);
+        }
       },
       { threshold: 0.6, root: feedRef.current }
     );
@@ -87,8 +90,6 @@ useEffect(() => {
   setIsPulling(false);
 }, []);
 
-if (lockPatternRef.current) return;
-} },
         { threshold: 0.6, root: feedRef.current }
       );
       obs.observe(v);
@@ -155,25 +156,19 @@ speedTimeoutRef.current = setTimeout(() => {
   isPullingGesture.current = false;
 };
 
-  // Scroll → flag infinite scroll pattern
-  const onScroll = () => {
+// Scroll → pattern state machine
+const onScroll = () => {
   if (!feedRef.current) return;
 
   const { scrollTop } = feedRef.current;
-
   if (scrollTop < 20) return;
 
   if (!hasScrolledOnce.current) {
-  hasScrolledOnce.current = true;
-  phase.current = 'pull';
-  setActivePattern('pull');
-  return;
-}
-
-if (phase.current === 'pull') {
-  phase.current = 'infinite';
-  setActivePattern('infinite');
-}
+    hasScrolledOnce.current = true;
+    phase.current = 'pull';
+    setActivePattern('pull');
+    return;
+  }
 
   if (phase.current === 'pull') {
     phase.current = 'infinite';
