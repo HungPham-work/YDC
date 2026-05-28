@@ -39,6 +39,9 @@ export default function ManipulationPhone() {
   const phase = useRef<'autoplay' | 'pull' | 'infinite'>('autoplay');
   const isPullingGesture = useRef(false);
   const speedTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [showSpeedPattern, setShowSpeedPattern] = useState(false);
+  const hasScrolledOnce = useRef(false);
+  const hasTriggeredPull = useRef(false);
   const touchStartY = useRef(0);
 
   // Pause all, play current
@@ -78,6 +81,7 @@ export default function ManipulationPhone() {
   const v = videoRefs.current[activeIdx];
   if (v) v.playbackRate = next;
 
+  setShowSpeedPattern(true);
   setActivePattern('speed');
 
   if (speedTimeoutRef.current) {
@@ -85,6 +89,8 @@ export default function ManipulationPhone() {
   }
 
   speedTimeoutRef.current = setTimeout(() => {
+    setShowSpeedPattern(false);
+
     if (phase.current === 'pull') {
       setActivePattern('pull');
     } else if (phase.current === 'infinite') {
@@ -123,18 +129,26 @@ export default function ManipulationPhone() {
   // Scroll → flag infinite scroll pattern
   const onScroll = () => {
   if (!feedRef.current) return;
+
   const { scrollTop } = feedRef.current;
+
   if (scrollTop < 20) return;
 
-  if (phase.current === 'autoplay') {
-  phase.current = 'pull';
-  setActivePattern('pull');
-} else if (phase.current === 'pull') {
-  phase.current = 'infinite';
-  setActivePattern('infinite');
-}
-};
+  if (!hasScrolledOnce.current) {
+    hasScrolledOnce.current = true;
 
+    phase.current = 'pull';
+    setActivePattern('pull');
+
+    return;
+  }
+
+  if (phase.current === 'pull') {
+    phase.current = 'infinite';
+    setActivePattern('infinite');
+  }
+};
+  
   const currentPattern = PATTERNS.find(p => p.id === activePattern);
 
   return (
@@ -184,7 +198,7 @@ export default function ManipulationPhone() {
 
           {/* 2x speed badge */}
           <AnimatePresence>
-            {speed === 2 && (
+            {showSpeedPattern && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }}
                 className="absolute top-10 right-3 z-40 pointer-events-none">
