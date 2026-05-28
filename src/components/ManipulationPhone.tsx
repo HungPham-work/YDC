@@ -101,9 +101,8 @@ setTimeout(() => {
   const onTouchEnd   = () => {
     if (isPullingGesture.current && pullY > 30) {
       setIsPulling(true);
-     if (phase.current === 'waitPull') {
+    if (phase.current === 'waitPull') {
   phase.current = 'pull';
-  setActivePattern('pull');
 }
       setTimeout(() => { setIsPulling(false); setPullY(0); }, 1000);
     } else {
@@ -118,11 +117,12 @@ setTimeout(() => {
   if (scrollTop < 20) return;
 
   if (phase.current === 'autoplay') {
-    phase.current = 'waitPull';
-  } else if (phase.current === 'pull' || phase.current === 'waitPull') {
-    phase.current = 'infinite';
-    setActivePattern('infinite');
-  }
+  phase.current = 'waitPull';
+  setActivePattern('pull');
+} else if (phase.current === 'pull') {
+  phase.current = 'infinite';
+  setActivePattern('infinite');
+}
 };
 
   const currentPattern = PATTERNS.find(p => p.id === activePattern);
