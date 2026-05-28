@@ -36,6 +36,7 @@ export default function ManipulationPhone() {
   const [isPulling, setIsPulling]   = useState(false);
   const [pullY, setPullY]           = useState(0);
   const [activePattern, setActivePattern] = useState<string | null>(null);
+  const scrollCount = useRef(0);
   const touchStartY = useRef(0);
 
   // Pause all, play current
@@ -54,7 +55,11 @@ export default function ManipulationPhone() {
     videoRefs.current.forEach((v, i) => {
       if (!v) return;
       const obs = new IntersectionObserver(
-        ([entry]) => { if (entry.intersectionRatio > 0.6) { setActiveIdx(i); syncPlay(i, speed); setActivePattern('autoplay'); } },
+        ([entry]) => { if (entry.intersectionRatio > 0.6) {
+  setActiveIdx(i);
+  syncPlay(i, speed);
+  if (scrollCount.current === 0) setActivePattern('autoplay');
+} },
         { threshold: 0.6, root: feedRef.current }
       );
       obs.observe(v);
@@ -93,9 +98,12 @@ export default function ManipulationPhone() {
   const onScroll = () => {
   if (!feedRef.current) return;
   const { scrollTop } = feedRef.current;
-  if (scrollTop < 20) {
+  if (scrollTop < 20) return;
+  if (scrollCount.current === 0) {
+    scrollCount.current = 1;
     setActivePattern('pull');
-  } else if (scrollTop > 504 * 2) {
+  } else if (scrollCount.current === 1) {
+    scrollCount.current = 2;
     setActivePattern('infinite');
   }
 };
