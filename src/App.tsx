@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import logo from './assets/logo.png';
 import CountdownTimer from './components/CountdownTimer';
+import ManipulationPhone from './components/ManipulationPhone';
 import { 
   Clock, 
   MapPin, 
@@ -453,26 +454,7 @@ export default function App() {
           </motion.h2>
 
           {/* Grid 4 Cards holding manipulative techniques */}
-          <motion.div {...revealProps} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {contentData.manipulation.cards.map((card, idx) => (
-              <div 
-                key={idx} 
-                className="bg-gray-50/70 border border-gray-100 hover:border-gray-200 hover:bg-gray-100/40 hover:scale-[1.02] p-6 rounded-3xl transition-all duration-300 flex flex-col justify-between h-[210px] group cursor-default"
-              >
-                <div>
-                  <div className="text-[10px] bg-white w-10 h-10 shadow-sm border border-gray-100 group-hover:scale-110 flex items-center justify-center font-bold rounded-2xl mb-4 transition-transform text-lg">
-                    {card.emoji}
-                  </div>
-                  <h3 className="text-base font-bold text-gray-900 mb-2 font-display">
-                    {card.name}
-                  </h3>
-                  <p className="text-xs text-gray-500 leading-relaxed line-clamp-3">
-                    {card.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </motion.div>
+          <ManipulationPhone />
 
         </div>
       </section>
