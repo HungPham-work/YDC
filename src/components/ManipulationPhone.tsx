@@ -35,8 +35,9 @@ export default function ManipulationPhone() {
   const [speed, setSpeed]           = useState(1);
   const [isPulling, setIsPulling]   = useState(false);
   const [pullY, setPullY]           = useState(0);
-  const [activePattern, setActivePattern] = useState<string | null>(null);
-  const scrollCount = useRef(0);
+  const [activePattern, setActivePattern] = useState<string | null>('autoplay');
+  const phase = useRef<'autoplay' | 'waitPull' | 'pull' | 'infinite'>('autoplay');
+  const isPullingGesture = useRef(false);
   const touchStartY = useRef(0);
 
   // Pause all, play current
@@ -58,7 +59,6 @@ export default function ManipulationPhone() {
         ([entry]) => { if (entry.intersectionRatio > 0.6) {
   setActiveIdx(i);
   syncPlay(i, speed);
-  if (scrollCount.current === 0) setActivePattern('autoplay');
 } },
         { threshold: 0.6, root: feedRef.current }
       );
@@ -75,19 +75,36 @@ export default function ManipulationPhone() {
     const v = videoRefs.current[activeIdx];
     if (v) v.playbackRate = next;
     setActivePattern('speed');
+
+setTimeout(() => {
+  setActivePattern(
+    phase.current === 'infinite'
+      ? 'infinite'
+      : 'autoplay'
+  );
+}, 3000);
   };
 
   // Pull to refresh — touch
-  const onTouchStart = (e: React.TouchEvent) => { touchStartY.current = e.touches[0].clientY; };
+  const onTouchStart = (e: React.TouchEvent) => {
+  touchStartY.current = e.touches[0].clientY;
+  isPullingGesture.current = false;
+};
   const onTouchMove  = (e: React.TouchEvent) => {
     if (!feedRef.current) return;
     const delta = e.touches[0].clientY - touchStartY.current;
-    if (feedRef.current.scrollTop === 0 && delta > 0) setPullY(Math.min(delta * 0.4, 48));
+    if (feedRef.current.scrollTop === 0 && delta > 0) {
+  isPullingGesture.current = true;
+  setPullY(Math.min(delta * 0.4, 48));
+}
   };
   const onTouchEnd   = () => {
-    if (pullY > 30) {
+    if (isPullingGesture.current && pullY > 30) {
       setIsPulling(true);
-     if (scrollCount.current <= 1) setActivePattern('pull');
+     if (phase.current === 'waitPull') {
+  phase.current = 'pull';
+  setActivePattern('pull');
+}
       setTimeout(() => { setIsPulling(false); setPullY(0); }, 1000);
     } else {
       setPullY(0);
@@ -99,11 +116,11 @@ export default function ManipulationPhone() {
   if (!feedRef.current) return;
   const { scrollTop } = feedRef.current;
   if (scrollTop < 20) return;
-  if (scrollCount.current === 0) {
-    scrollCount.current = 1;
-    // không set pattern ở đây — để onTouchEnd xử lý
-  } else if (scrollCount.current === 1) {
-    scrollCount.current = 2;
+
+  if (phase.current === 'autoplay') {
+    phase.current = 'waitPull';
+  } else if (phase.current === 'pull' || phase.current === 'waitPull') {
+    phase.current = 'infinite';
     setActivePattern('infinite');
   }
 };
