@@ -14,8 +14,8 @@ const VIDEOS = [
   // loop lại
   { src: '/assets/animal.mp4',   user: '@wildlife.vn',    desc: 'Khoảnh khắc động vật hoang dã 🦁 #nature',            likes: '284.1K', comments: '3.2K', shares: '12.4K' },
   { src: '/assets/food.mp4',     user: '@foodholic.hcm',  desc: 'Món ăn đường phố Việt Nam 🍢 #streetfood',            likes: '93.7K',  comments: '2.1K', shares: '6.8K'  },
-  { src: '/assets/game.mp4',     user: '@gaming.vn',      desc: 'Highlight trận đấu đỉnh nhất tuần 🎮 #esports',       likes: '176.4K', comments: '3.9K', shares: '14.2K' },
-  { src: '/assets/brainrot.mp4', user: '@brainrot.daily', desc: 'Tại sao mình vẫn đang xem TikTok lúc 2am 🌙',        likes: '623.8K', comments: '11.2K',shares: '41.5K' },
+  { src: '/assets/game.mp4',     user: '@gaming.vn',      desc: 'Top 1 server VN gọi tên aiiii? 🎮 #esports',       likes: '176.4K', comments: '3.9K', shares: '14.2K' },
+  { src: '/assets/brainrot.mp4', user: '@brainrot.daily', desc: 'Tiktok lúc 2h sáng 🌙',        likes: '623.8K', comments: '11.2K',shares: '41.5K' },
 ];
 
 const PATTERNS = [
@@ -91,10 +91,14 @@ export default function ManipulationPhone() {
 
   // Scroll → flag infinite scroll pattern
   const onScroll = () => {
-    if (!feedRef.current) return;
-    const { scrollTop } = feedRef.current;
-    if (scrollTop > 50) setActivePattern('infinite');
-  };
+  if (!feedRef.current) return;
+  const { scrollTop } = feedRef.current;
+  if (scrollTop < 20) {
+    setActivePattern('pull');
+  } else if (scrollTop > 504 * 2) {
+    setActivePattern('infinite');
+  }
+};
 
   const currentPattern = PATTERNS.find(p => p.id === activePattern);
 
