@@ -106,7 +106,7 @@ export default function MobileMenu({ isOpen, onClose, onScrollTo }: MobileMenuPr
             {/* Live Clock & Call To Action */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pt-4 border-t border-gray-100 gap-4">
               <div className="flex items-center justify-between">
-                <span className="text-xs text-gray-400">Thời gian Luân Đôn hiện tại:</span>
+                <span className="text-xs text-gray-400">Thời gian Hà Nội hiện tại:</span>
                 <LiveClock />
               </div>
 
